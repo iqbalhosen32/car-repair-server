@@ -167,16 +167,16 @@ client.connect(err => {
     const email = req.body.email;
     // console.log(req.body.email)
 
-    adminCollection.find({ email: email })
+    adminCollection.find({ email: email }) 
       .toArray((err, admins) => {
         const filter = { data: data.data }
-        // console.log(filter)
         if (admins.length === 0) {
           filter.email = email;
         }
 
         bookingCollection.find(filter)
           .toArray((err, documents) => {
+            console.log(documents)
             res.send(documents)
           })
       })
